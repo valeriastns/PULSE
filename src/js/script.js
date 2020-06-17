@@ -2,8 +2,8 @@ $(document).ready(function () {
     $('.carousel__inner').slick({
         speed: 1200,
         // adaptiveHeight: true,
-        prevArrow: '<button type="button" class="slick-prev"><img src="../icons/prev.png"></button>',
-        nextArrow: '<button type="button" class="slick-next"><img src="../icons/next.png"></button>',
+        prevArrow: '<button type="button" class="slick-prev"><img src="icons/prev.png"></button>',
+        nextArrow: '<button type="button" class="slick-next"><img src="icons/next.png"></button>',
         responsive: [
             {
                 breakpoint: 992,
@@ -41,11 +41,61 @@ $(document).ready(function () {
     $('.modal__close').on('click', function () {
         $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
     });
-    
+
     $('.button_mini').each(function (i) {
         $(this).on('click', function () {
             $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
             $('.overlay, #order').fadeIn('slow');
         });
     });
+
+    function validateForms(form) {
+        $(form).validate({
+            rules: {
+                name: 'required',
+                phone: {
+                    required: true,
+                    minlength: 10
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: "Пожалуйста, введите свое имя",
+                phone: {
+                    required: "Пожалуйста, введите свой номер телефона",
+                    minlength: jQuery.validator.format("Введите минимум 10 символов!")
+                },
+                email: {
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Пожалуйста введите правильно свою почту"
+                }
+            }
+        });
+    }
+
+    validateForms('#consultation-form');
+    validateForms('#consultation form');
+    validateForms('#order form');
+
+    $('input[name=phone]').mask("+7 (999) 999-99-99");
+
+    $('form').submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function () {
+            $(this).find('input').val('');
+            $('#consultation, #order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow');
+            
+
+            $('form').trigger('reset');
+        });
+        return false;
+    })
 });
