@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
     <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.min.css">
     <title>Pulse</title>
 </head>
 
 <body>
-    <section class="promo">
+    <section id="up" class="promo">
         <div class="container">
             <header class="header">
                 <a href="#" class="header__logo">
@@ -68,7 +69,7 @@
                     </div>
                 </div>
                 <div class="advantages__block">
-                    <img src="icons/heart.png" alt="2">
+                    <img src="icons/heart.png" alt="2" class="advantages__icon advantages__icon_animated">
                     <div class="advantages__title">Заботимся о здоровье</div>
                     <div class="advantages__descr">Мы работаем для того,
                         чтобы Ваши занятия спортом шли на пользу Вашему здоровью и были в радость Вам и Вашим близким!
@@ -418,9 +419,9 @@
             <div class="modal__subtitle">Просто заполните форму заявки</div>
             <div class="modal__descr">и мы вам перезвоним в течение 10 минут</div>
             <form class="feed-form feed-form_mt25" action="#">
-                <input name="name"  placeholder="Ваше имя" type="text">
-                <input name="phone"  placeholder="Ваш телефон">
-                <input name="email"  placeholder="Ваш E-mail" type="email">
+                <input name="name" placeholder="Ваше имя" type="text">
+                <input name="phone" placeholder="Ваш телефон">
+                <input name="email" placeholder="Ваш E-mail" type="email">
                 <button class="button button_submit">Заказать консультацию</button>
             </form>
         </div>
@@ -443,6 +444,10 @@
             <div class="modal__descr">Наш менеджер свяжется с вами в ближайшее время</div>
         </div>
     </div>
+
+    <a href="#up" class="pageup">
+        <i class="fas fa-chevron-circle-up"></i>
+    </a>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

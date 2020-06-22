@@ -1,0 +1,14 @@
+.pageup {
+    display: none;
+    position: fixed;
+    color: $main-color;
+    bottom: 40px;
+    right: 40px;
+
+    &:hover {
+        color: $main-color;
+    }
+    i {
+        font-size: 25px;
+    }
+}
